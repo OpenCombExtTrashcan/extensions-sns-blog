@@ -28,75 +28,39 @@ class Blog extends Extension
                 	array(
                 		'keys' => 'bid' ,
                 		'table' => 'blog' ,
+                		'hasAndBelongsToMany' => array(
+							array(
+								'prop' => 'tag' ,
+								'fromk' => 'bid' ,
+								'btok' => 'bid' ,
+								'bfromk' => 'tid' ,
+								'tok' => 'tid' ,
+								'bridge' => 'blog_link' ,
+								'model' => 'blog_tag',
+							) ,
+						),
                 	
-						'hasMany' => array(
-							array(
-								'prop' => 'image' ,
-								'fromk' => 'bid' ,
-								'tok' => 'pid' ,
-								'model' => 'images'
-							),
-							array(
-								'prop' => 'music' ,
-								'fromk' => 'bid' ,
-								'tok' => 'pid' ,
-								'model' => 'musics'
-							),
-							array(
-								'prop' => 'video' ,
-								'fromk' => 'bid' ,
-								'tok' => 'pid' ,
-								'model' => 'videos'
-							),
-						) ,
                 	)
         ) ;
-          
-        $aAssocMap->addOrm(
-            	array(
-            		'keys' => 'id' ,
-            		'table' => 'images' ,
-            		'belongsTo' => array(
-            			array(
-            				'prop' => 'blog' ,
-            				'fromk' => 'pid' ,
-            				'tok' => 'bid' ,
-            				'model' => 'blog'
-            			),
-            		),
-            	)
-        );  
-          
-        $aAssocMap->addOrm(
-            	array(
-            		'keys' => 'id' ,
-            		'table' => 'musics' ,
-            		'belongsTo' => array(
-            			array(
-            				'prop' => 'blog' ,
-            				'fromk' => 'pid' ,
-            				'tok' => 'bid' ,
-            				'model' => 'blog'
-            			),
-            		),
-            	)
-        );  
-          
-        $aAssocMap->addOrm(
-            	array(
-            		'keys' => 'id' ,
-            		'table' => 'videos' ,
-            		'belongsTo' => array(
-            			array(
-            				'prop' => 'blog' ,
-            				'fromk' => 'pid' ,
-            				'tok' => 'bid' ,
-            				'model' => 'blog'
-            			),
-            		),
-            	)
-        );  
 		
+        $aAssocMap->addOrm(
+	            	array(
+	            		'keys' => 'tid' ,
+	            		'table' => 'blog_tag' ,
+	            		'hasAndBelongsToMany' => array(
+	            			array(
+									'prop' => 'blog' ,
+									'fromk' => 'tid' ,
+									'btok' => 'tid' ,
+									'bfromk' => 'bid' ,
+									'tok' => 'bid' ,
+									'bridge' => 'blog_link' ,
+									'model' => 'blog',
+	            			),
+	            		),
+	            	)
+        );
+            
 		///////////////////////////////////////
 		// 向系统添加控制器
 		$this->application()->accessRouter()->addController('blog', "oc\\ext\\blog\\Index") ;

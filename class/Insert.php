@@ -40,10 +40,10 @@ class Insert extends Controller
 		// 为视图创建控件
 		$this->defaultView->addWidget( new Text("title","标题","",Text::single), 'title' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		$this->defaultView->addWidget( new Text("text","内容","",Text::multiple), 'text' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
-//		$this->defaultView->addWidget( new Text("path","图片","",Text::single), 'image.path' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
+		$this->defaultView->addWidget( new Text("tag","标签","",Text::single), 'tag.title' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		
 		//设置model
-		$this->defaultView->setModel( Model::fromFragment('blog') ) ;
+		$this->defaultView->setModel( Model::fromFragment('blog',array("tag")) ) ;
 		
 	}
 	
@@ -63,9 +63,13 @@ class Insert extends Controller
             	
 				$this->defaultView->model()->setData('uid',IdManager::fromSession()->currentId()->userId()) ;
 				$this->defaultView->model()->setData('time',time()) ;
-//            	$child = $this->defaultView->model()->child('image')->createChild();
-//            	$child->setData('pid',2);
-//            	$child->setData('path',2);
+				
+            	if(!$this->defaultView->model()->child('tag')->loadChild($this->aParams->get("tag"),"title"))
+            	{
+            	    $child = $this->defaultView->model()->child('tag')->createChild();
+            	    $child->setData('title',$this->aParams->get("tag"));
+            	}
+            	
             	
             	try {
             		$this->defaultView->model()->save() ;
