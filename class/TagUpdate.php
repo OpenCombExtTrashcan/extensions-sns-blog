@@ -27,7 +27,7 @@ use jc\mvc\view\DataExchanger ;
  * @author gaojun
  *
  */
-class Insert extends Controller
+class TagUpdate extends Controller
 {
 	protected function init()
 	{
@@ -35,22 +35,24 @@ class Insert extends Controller
 		$this->add(new FrontFrame()) ;
 		
 		//创建视图
-		$this->createView("defaultView", "Blog.Insert.html",true) ;
+		$this->createView("defaultView", "Blog.Tag.Update.html",true) ;
 		
 		// 为视图创建控件
-		$this->defaultView->addWidget( new Text("title","标题","",Text::single), 'title' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
-		$this->defaultView->addWidget( new Text("text","内容","",Text::multiple), 'text' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
-		$this->defaultView->addWidget( new Text("tag","标签","",Text::single), 'tag.title' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
+		$this->defaultView->addWidget( new Text("title","标签","",Text::single), 'title' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		
 		//设置model
-		$this->defaultView->setModel( Model::fromFragment('blog',array("tag")) ) ;
+		$this->defaultView->setModel( Model::fromFragment('blog_tag') ) ;
+		
 		
 	}
 	
 	public function process()
 	{
 		
-		if( $this->defaultView->isSubmit( $this->aParams ) )
+		$this->defaultView->model()->load($this->aParams->get("id"),"tid");
+		$this->defaultView->exchangeData(DataExchanger::MODEL_TO_WIDGET) ;
+		
+		if( $this->defaultView->isSubmit( $this->aParams ) )		 
 		{
             // 加载 视图窗体的数据
             $this->defaultView->loadWidgets( $this->aParams ) ;
@@ -61,15 +63,11 @@ class Insert extends Controller
             	$this->defaultView->exchangeData(DataExchanger::WIDGET_TO_MODEL) ;
             	
             	
-				$this->defaultView->model()->setData('uid',IdManager::fromSession()->currentId()->userId()) ;
-				$this->defaultView->model()->setData('time',time()) ;
-				
-            	$this->defaultView->model()->child('tag')->buildChild($this->aParams->get("tag"),"title");
-            	
-            	
+            	//$this->defaultView->model()->setData('uid',IdManager::fromSession()->currentId()->userId()) ;
+            		
             	try {
             		$this->defaultView->model()->save() ;
-            		$this->defaultView->createMessage( Message::success, "发布成功！" ) ;
+            		$this->defaultView->createMessage( Message::success, "修改成功！" ) ;
             		
             		$this->defaultView->hideForm() ;
             			

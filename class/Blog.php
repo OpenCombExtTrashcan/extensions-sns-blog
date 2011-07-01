@@ -45,6 +45,21 @@ class Blog extends Extension
 		
         $aAssocMap->addOrm(
 	            	array(
+	            		'keys' => 'id' ,
+	            		'table' => 'blog_link' ,
+	            		'belongsTo' => array(
+	            			array(
+                				'prop' => 'blog' ,
+                				'fromk' => 'bid' ,
+                				'tok' => 'bid' ,
+                				'model' => 'blog'
+	            			),
+	            		),
+	            	)
+        );
+		
+        $aAssocMap->addOrm(
+	            	array(
 	            		'keys' => 'tid' ,
 	            		'table' => 'blog_tag' ,
 	            		'hasAndBelongsToMany' => array(
@@ -69,7 +84,7 @@ class Blog extends Extension
 		$this->application()->accessRouter()->addController('blog.delete', "oc\\ext\\blog\\Delete") ;
 		$this->application()->accessRouter()->addController('blog.tag.update', "oc\\ext\\blog\\TagUpdate") ;
 		$this->application()->accessRouter()->addController('blog.tag.list', "oc\\ext\\blog\\TagList") ;
-		$this->application()->accessRouter()->addController('blog.tag', "oc\\ext\\blog\\TagIndex") ;
+		$this->application()->accessRouter()->addController('blog.tag.content', "oc\\ext\\blog\\TagContent") ;
 	}
 	
 }
