@@ -7,7 +7,7 @@ use jc\session\Session;
 use jc\auth\IdManager;
 use jc\auth\Id;
 use jc\db\ExecuteException;
-use jc\mvc\controller\Controller ;
+use oc\mvc\controller\Controller ;
 use jc\verifier\Email;
 use jc\verifier\Length;
 use jc\verifier\NotEmpty;
