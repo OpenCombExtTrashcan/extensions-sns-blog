@@ -78,13 +78,13 @@ class Blog extends Extension
             
 		///////////////////////////////////////
 		// 向系统添加控制器
-		$this->application()->accessRouter()->addController('blog', "oc\\ext\\blog\\Index") ;
-		$this->application()->accessRouter()->addController('blog.insert', "oc\\ext\\blog\\Insert") ;
-		$this->application()->accessRouter()->addController('blog.update', "oc\\ext\\blog\\Update") ;
-		$this->application()->accessRouter()->addController('blog.delete', "oc\\ext\\blog\\Delete") ;
-		$this->application()->accessRouter()->addController('blog.tag.update', "oc\\ext\\blog\\TagUpdate") ;
-		$this->application()->accessRouter()->addController('blog.tag.list', "oc\\ext\\blog\\TagList") ;
-		$this->application()->accessRouter()->addController('blog.tag.content', "oc\\ext\\blog\\TagContent") ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Index",'blog','') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Insert",'insert') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Update",'update') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Delete",'delete') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagUpdate",'tag.update') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagList",'tag.list') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagContent",'tag.content') ;
 	}
 	
 }
