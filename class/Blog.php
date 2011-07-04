@@ -85,7 +85,7 @@ class Blog extends Extension
 		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagUpdate",'tag.update') ;
 		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagList",'tag.list') ;
 		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagContent",'tag.content') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagTop",'tag.top') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagHot",'tag.hot') ;
 	}
 	
 }

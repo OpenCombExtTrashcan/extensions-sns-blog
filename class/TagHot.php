@@ -29,7 +29,7 @@ use jc\mvc\view\DataExchanger ;
  * @author gaojun
  *
  */
-class TagTop extends Controller
+class TagHot extends Controller
 {
 	protected function init()
 	{
@@ -37,11 +37,11 @@ class TagTop extends Controller
 		$this->add(new FrontFrame()) ;
 		
 		//创建视图
-		$this->createView("defaultView", "Blog.Tag.Content.html",true) ;
+		$this->createView("defaultView", "Blog.Tag.Hot.html",true) ;
 		
 		
 		//设置model
-		$this->model = Model::fromFragment('blog_link',array("blog"),true);
+		$this->model = Model::fromFragment('blog_tag',array(),true);
 		$this->defaultView->setModel($this->model) ;
 		
 	}
@@ -49,11 +49,11 @@ class TagTop extends Controller
 	public function process()
 	{
 		
-		$this->defaultView->model()->load($this->aParams->get("tid"),"tid");
-		foreach ($this->model->childIterator() as $row){
-					
-			echo $row['blog.title'] ;
-		}
+		$this->defaultView->model()->load();
+//		foreach ($this->model->childIterator() as $row){
+//					
+//			echo $row['blog.title'] ;
+//		}
 	}
 }
 
