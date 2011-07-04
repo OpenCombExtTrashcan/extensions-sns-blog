@@ -42,8 +42,8 @@ class Update extends Controller
 		$this->defaultView->addWidget( new Text("text","内容","",Text::multiple), 'text' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		
 		//设置model
-		$this->defaultView->setModel( Model::fromFragment('blog') ) ;
-		
+		//$this->defaultView->setModel( Model::fromFragment('blog') ) ;
+		$this->defaultView->setModel( new ModelBlog() ) ;
 		
 	}
 	
@@ -51,7 +51,16 @@ class Update extends Controller
 	{
 		
 		$this->defaultView->model()->load($this->aParams->get("id"),"bid");
+		
+		$child = $this->defaultView->model()->child('tag');
+		foreach ($child->childIterator() as $row){
+			$aTag[] = $row["title"];
+		}
+		$sTag = @implode(" ", $aTag);
+		
 		$this->defaultView->exchangeData(DataExchanger::MODEL_TO_WIDGET) ;
+		$this->defaultView->addWidget( new Text("tag","标签",$sTag,Text::single), 'tag.title' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
+		
 		
 		if( $this->defaultView->isSubmit( $this->aParams ) )		 
 		{
@@ -66,7 +75,16 @@ class Update extends Controller
             	
             	$this->defaultView->model()->setData('uid',IdManager::fromSession()->currentId()->userId()) ;
             	$this->defaultView->model()->setData('time',time()) ;
-            		
+            	
+            	
+            	$this->defaultView->model()->child('tag')->delete() ;
+            	$this->defaultView->model()->child('tag')->clearChildren() ;
+            	
+            	$aTag = explode(" ", $this->aParams->get("tag"));
+            	for($i = 0; $i < sizeof($aTag); $i++){
+					$this->defaultView->model()->child('tag')->buildChild($aTag[$i],"title");
+				}
+            	
             	try {
             		$this->defaultView->model()->save() ;
             		$this->defaultView->createMessage( Message::success, "修改成功！" ) ;

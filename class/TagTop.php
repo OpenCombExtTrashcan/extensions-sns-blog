@@ -29,7 +29,7 @@ use jc\mvc\view\DataExchanger ;
  * @author gaojun
  *
  */
-class TagContent extends Controller
+class TagTop extends Controller
 {
 	protected function init()
 	{
@@ -50,11 +50,10 @@ class TagContent extends Controller
 	{
 		
 		$this->defaultView->model()->load($this->aParams->get("tid"),"tid");
-//		print_r(DB::singleton()->executeLog()) ;
-//		foreach ($this->model->childIterator() as $row){
-//					
-//			echo $row['blog.title'] ;
-//		}
+		foreach ($this->model->childIterator() as $row){
+					
+			echo $row['blog.title'] ;
+		}
 	}
 }
 

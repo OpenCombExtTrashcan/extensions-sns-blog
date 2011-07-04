@@ -1,7 +1,6 @@
 <?php
 namespace oc\ext\blog ;
 
-
 use oc\base\FrontFrame;
 use jc\session\Session;
 use jc\auth\IdManager;
@@ -41,7 +40,8 @@ class Insert extends Controller
 		$this->defaultView->addWidget( new Text("tag","标签","",Text::single), 'tag.title' )->addVerifier( NotEmpty::singleton (), "请说点什么" ) ;
 		
 		//设置model
-		$this->defaultView->setModel( Model::fromFragment('blog',array("tag")) ) ;
+		$this->defaultView->setModel( new ModelBlog() ) ;
+		//$this->defaultView->setModel( Model::fromFragment('blog',array("tag")) ) ;
 		
 	}
 	
@@ -62,9 +62,12 @@ class Insert extends Controller
 				$this->defaultView->model()->setData('uid',IdManager::fromSession()->currentId()->userId()) ;
 				$this->defaultView->model()->setData('time',time()) ;
 				
-            	$this->defaultView->model()->child('tag')->buildChild($this->aParams->get("tag"),"title");
-            	
-            	
+				$aTag = explode(" ", $this->aParams->get("tag"));
+				
+				for($i = 0; $i < sizeof($aTag); $i++){
+					$this->defaultView->model()->child('tag')->buildChild($aTag[$i],"title");
+				}
+				
             	try {
             		$this->defaultView->model()->save() ;
             		$this->defaultView->createMessage( Message::success, "发布成功！" ) ;
