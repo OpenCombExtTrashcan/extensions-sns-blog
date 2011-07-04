@@ -1,6 +1,8 @@
 <?php
 namespace oc\ext\blog ;
 
+use jc\db\DB;
+
 use jc\mvc\model\db\orm\operators\Inserter;
 use jc\mvc\model\db\orm\operators\Updater;
 use jc\mvc\model\db\orm\ModelAssociationMap;
@@ -67,9 +69,9 @@ class ModelBlog extends Model
 	{
 		if($bIncrease)
 		{
-		    
+		    Db::singleton()->query("update blog_blog_tag as t1,blog_blog_link as t2 set t1.hot=t1.hot+1 where t1.tid = t2.tid and t2.bid=".$this->data('bid'));
 		}else{
-			
+		    Db::singleton()->query("update blog_blog_tag as t1,blog_blog_link as t2 set t1.hot=t1.hot-1 where t1.tid = t2.tid and t2.bid=".$this->data('bid'));
 		}
 		// $this->data('bid') ;
 	}
