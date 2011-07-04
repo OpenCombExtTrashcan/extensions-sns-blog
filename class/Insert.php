@@ -69,10 +69,16 @@ class Insert extends Controller
 				}
 				
             	try {
-            		$this->defaultView->model()->save() ;
-            		$this->defaultView->createMessage( Message::success, "发布成功！" ) ;
+            		if( $this->defaultView->model()->save() )
+            		{
+            			$this->defaultView->createMessage( Message::success, "发布成功！" ) ;
+            			$this->defaultView->hideForm() ;
+            		}
+            		else 
+            		{
+            			$this->defaultView->createMessage( Message::failed, "遇到错误！" ) ;
+            		}
             		
-            		$this->defaultView->hideForm() ;
             			
             	} catch (ExecuteException $e) {
             			throw $e ;

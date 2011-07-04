@@ -49,7 +49,6 @@ class Update extends Controller
 	
 	public function process()
 	{
-		
 		$this->defaultView->model()->load($this->aParams->get("id"),"bid");
 		
 		$child = $this->defaultView->model()->child('tag');
@@ -86,10 +85,16 @@ class Update extends Controller
 				}
             	
             	try {
-            		$this->defaultView->model()->save() ;
-            		$this->defaultView->createMessage( Message::success, "修改成功！" ) ;
+            		if( $this->defaultView->model()->save() )
+            		{
+	            		$this->defaultView->createMessage( Message::success, "修改成功！" ) ;
+	            		$this->defaultView->hideForm() ;
+            		}
             		
-            		$this->defaultView->hideForm() ;
+            		else 
+            		{
+	            		$this->defaultView->createMessage( Message::success, "修改成功！" ) ;
+            		}
             			
             	} catch (ExecuteException $e) {
             			throw $e ;
