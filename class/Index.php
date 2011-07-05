@@ -46,6 +46,8 @@ class Index extends Controller
 	{
 		$this->model->load();
 		
+		
+		$this->model->printStruct() ;
 //		foreach ($this->model->childIterator() as $row){
 //			echo "<pre>";print_r($row->data("text"));echo "</pre>";
 //		}
