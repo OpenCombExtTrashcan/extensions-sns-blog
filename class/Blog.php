@@ -14,14 +14,6 @@ class Blog extends Extension
 {
 	public function load()
 	{
-	
-		//是否登陆
-		if(!IdManager::fromSession()->currentId())
-		{
-		    echo "请先登陆";
-		}
-		
-		
     	// 取得模型关系图的单件实例
         $aAssocMap = ModelAssociationMap::singleton() ;
     	$aAssocMap->addOrm(
