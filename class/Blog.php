@@ -3,7 +3,7 @@ namespace oc\ext\blog ;
 
 use jc\auth\IdManager;
 
-use jc\mvc\model\db\orm\ModelAssociationMap;
+use jc\mvc\model\db\orm\PrototypeAssociationMap;
 
 use jc\db\DB ;
 use jc\db\PDODriver ;
@@ -15,7 +15,7 @@ class Blog extends Extension
 	public function load()
 	{
     	// 取得模型关系图的单件实例
-        $aAssocMap = ModelAssociationMap::singleton() ;
+        $aAssocMap = PrototypeAssociationMap::singleton() ;
     	$aAssocMap->addOrm(
                 	array(
                 		'keys' => 'bid' ,

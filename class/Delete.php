@@ -11,7 +11,7 @@ use jc\auth\Id;
 use jc\db\ExecuteException;
 use oc\mvc\controller\Controller ;
 use oc\mvc\model\db\Model;
-use jc\mvc\model\db\orm\ModelAssociationMap;
+use jc\mvc\model\db\orm\PrototypeAssociationMap;
 use jc\verifier\Email;
 use jc\verifier\Length;
 use jc\verifier\NotNull;
@@ -35,7 +35,7 @@ class Delete extends Controller
 		// 网页框架
 		$this->add(new FrontFrame()) ;
 		
-		$this->model = Model::fromFragment('blog');
+		$this->model = Model::fromFragment('blog',array('tag'));
 	}
 	
 	public function process()

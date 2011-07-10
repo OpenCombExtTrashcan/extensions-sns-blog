@@ -5,7 +5,7 @@ use jc\db\DB;
 
 use jc\mvc\model\db\orm\operators\Inserter;
 use jc\mvc\model\db\orm\operators\Updater;
-use jc\mvc\model\db\orm\ModelAssociationMap;
+use jc\mvc\model\db\orm\PrototypeAssociationMap;
 use oc\mvc\model\db\Model;
 
 class ModelBlog extends Model
@@ -13,7 +13,7 @@ class ModelBlog extends Model
 	public function __construct($bAggregarion=false)
 	{
 		parent::__construct(
-			ModelAssociationMap::singleton()->fragment('blog',array("blog:tag"))
+			PrototypeAssociationMap::singleton()->fragment('blog',array("blog:tag"))
 			, $bAggregarion
 		) ;
 	}
