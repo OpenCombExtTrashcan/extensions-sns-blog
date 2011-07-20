@@ -33,13 +33,13 @@ class FriendBlog extends Controller
 {
 	protected function init()
 	{
-		$this->createView("defaultView", "Blog.FriendBlog.html") ;
+		$this->createView("FriendBlog", "Blog.FriendBlog.html") ;
 	}
 	
 	public function process()
 	{
 		$oRs = Db::singleton()->query("SELECT t3.* FROM coreuser_subscribe as t1 INNER JOIN coreuser_subscribe as t2 on t1.uid=t2.subscribeid INNER JOIN blog_blog as t3 ON t1.uid=t3.uid where t2.uid = ".IdManager::fromSession()->currentId()->userId());
-		$this->defaultView->variables()->set("list",$oRs);
+		$this->viewFriendBlog->variables()->set("list",$oRs);
 	}
 }
 

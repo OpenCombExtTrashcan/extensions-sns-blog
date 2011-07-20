@@ -13,7 +13,7 @@ class ModelBlog extends Model
 	public function __construct($bAggregarion=false)
 	{
 		parent::__construct(
-			PrototypeAssociationMap::singleton()->fragment('blog',array("blog:tag"))
+			PrototypeAssociationMap::singleton()->fragment('blog',array("tag"))
 			, $bAggregarion
 		) ;
 	}

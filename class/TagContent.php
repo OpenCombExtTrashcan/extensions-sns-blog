@@ -33,23 +33,19 @@ class TagContent extends Controller
 {
 	protected function init()
 	{
-		
-		
-		
 		//创建视图
-		$this->createView("defaultView", "Blog.Tag.Content.html",true) ;
+		$this->createView("TagContent", "Blog.Tag.Content.html",true) ;
 		
 		
 		//设置model
 		$this->model = Model::fromFragment('blog_link',array("blog"),true);
-		$this->defaultView->setModel($this->model) ;
+		$this->viewTagContent->setModel($this->model) ;
 		
 	}
 	
 	public function process()
 	{
-		
-		$this->defaultView->model()->load($this->aParams->get("tid"),"tid");
+		$this->viewTagContent->model()->load($this->aParams->get("tid"),"tid");
 //		print_r(DB::singleton()->executeLog()) ;
 //		foreach ($this->model->childIterator() as $row){
 //					

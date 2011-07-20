@@ -31,15 +31,12 @@ class TagList extends Controller
 {
 	protected function init()
 	{
-		
-		
-		
 		//创建视图
-		$this->createView("defaultView", "Blog.Tag.List.html",true) ;
+		$this->createView("TagList", "Blog.Tag.List.html",true) ;
 		
 		
 		//设置model
-		$this->defaultView->setModel( Model::fromFragment('blog_tag',array(),true) ) ;
+		$this->viewTagList->setModel( Model::fromFragment('blog_tag',array(),true) ) ;
 		
 		
 	}
@@ -47,7 +44,7 @@ class TagList extends Controller
 	public function process()
 	{
 		
-		$this->defaultView->model()->load();
+		$this->viewTagList->model()->load();
 		
 	}
 }

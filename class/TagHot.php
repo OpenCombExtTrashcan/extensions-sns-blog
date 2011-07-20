@@ -33,23 +33,20 @@ class TagHot extends Controller
 {
 	protected function init()
 	{
-		
-		
-		
 		//创建视图
-		$this->createView("defaultView", "Blog.Tag.Hot.html",true) ;
+		$this->createView("TagHot", "Blog.Tag.Hot.html",true) ;
 		
 		
 		//设置model
 		$this->model = Model::fromFragment('blog_tag',array(),true);
-		$this->defaultView->setModel($this->model) ;
+		$this->viewTagHot->setModel($this->model) ;
 		
 	}
 	
 	public function process()
 	{
 		
-		$this->defaultView->model()->load();
+		$this->viewTagHot->model()->load();
 //		foreach ($this->model->childIterator() as $row){
 //					
 //			echo $row['blog.title'] ;

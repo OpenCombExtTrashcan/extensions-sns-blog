@@ -30,7 +30,7 @@ class Detail extends Controller
 {
 	protected function init()
 	{
-		$this->createView("viewDetail", "Blog.Index.html") ;
+		$this->createView("Detail", "Blog.Index.html") ;
 		
 		$this->model = Model::fromFragment('blog',array(),true);
 		
