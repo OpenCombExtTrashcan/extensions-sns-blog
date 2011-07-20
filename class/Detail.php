@@ -30,25 +30,18 @@ class Detail extends Controller
 {
 	protected function init()
 	{
-		// 网页框架
-		$this->add(new FrontFrame()) ;
-		
-		$this->createView("defaultView", "Blog.Index.html") ;
+		$this->createView("viewDetail", "Blog.Index.html") ;
 		
 		$this->model = Model::fromFragment('blog',array(),true);
 		
 		//设置model
-		$this->defaultView->setModel($this->model) ;
+		$this->viewDetail->setModel($this->model) ;
 		
 	}
 	
 	public function process()
 	{
 		$this->model->load();
-		
-//		foreach ($this->model->childIterator() as $row){
-//			echo "<pre>";print_r($row->data("text"));echo "</pre>";
-//		}
 	}
 }
 

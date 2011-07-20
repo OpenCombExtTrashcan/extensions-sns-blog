@@ -33,8 +33,8 @@ class TagContent extends Controller
 {
 	protected function init()
 	{
-		// 网页框架
-		$this->add(new FrontFrame()) ;
+		
+		
 		
 		//创建视图
 		$this->createView("defaultView", "Blog.Tag.Content.html",true) ;

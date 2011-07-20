@@ -33,16 +33,11 @@ class FriendBlog extends Controller
 {
 	protected function init()
 	{
-		// 网页框架
-		$this->add(new FrontFrame()) ;
-
 		$this->createView("defaultView", "Blog.FriendBlog.html") ;
-		
 	}
 	
 	public function process()
 	{
-		
 		$oRs = Db::singleton()->query("SELECT t3.* FROM coreuser_subscribe as t1 INNER JOIN coreuser_subscribe as t2 on t1.uid=t2.subscribeid INNER JOIN blog_blog as t3 ON t1.uid=t3.uid where t2.uid = ".IdManager::fromSession()->currentId()->userId());
 		$this->defaultView->variables()->set("list",$oRs);
 	}
