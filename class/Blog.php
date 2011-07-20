@@ -14,8 +14,25 @@ class Blog extends Extension
 {
 	public function load()
 	{
-    	// 取得模型关系图的单件实例
-        $aAssocMap = PrototypeAssociationMap::singleton() ;
+		// 定义ORM
+        $this->defineOrm(PrototypeAssociationMap::singleton()) ;
+
+		///////////////////////////////////////
+		// 向系统添加控制器
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Index",'blog','') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Insert",'insert') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Update",'update') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Delete",'delete') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\FriendBlog",'friendblog',"blog") ;
+		
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagUpdate",'tag.update') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagList",'tag.list') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagContent",'tag.content') ;
+		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagHot",'tag.hot') ;
+	}
+	
+	public function defineOrm(PrototypeAssociationMap $aAssocMap)
+	{
     	$aAssocMap->addOrm(
                 	array(
                 		'keys' => 'bid' ,
@@ -67,19 +84,6 @@ class Blog extends Extension
 	            		),
 	            	)
         );
-            
-		///////////////////////////////////////
-		// 向系统添加控制器
-		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Index",'blog','') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Insert",'insert') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Update",'update') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\blog\\Delete",'delete') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\blog\\FriendBlog",'friendblog',"blog") ;
-		
-		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagUpdate",'tag.update') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagList",'tag.list') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagContent",'tag.content') ;
-		$this->application()->accessRouter()->addController("oc\\ext\\blog\\TagHot",'tag.hot') ;
 	}
 	
 }
