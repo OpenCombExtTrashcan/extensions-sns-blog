@@ -1,3 +1,8 @@
+<?php \jc\resrc\HtmlResourcePool::singleton()->addRequire("blog.css",\jc\resrc\HtmlResourcePool::RESRC_CSS) ; ?>
+
+<div class="aboutTag">
+<h4>标签相关博文</h4>
+
 <?php
 				$__foreach_Arr_var0 = eval("if(!isset(\$__uivar_theModel)){ \$__uivar_theModel=&\$aVariables->getRef('theModel') ;};
 return \$__uivar_theModel->childIterator();");
@@ -6,11 +11,12 @@ return \$__uivar_theModel->childIterator();");
 					foreach($__foreach_Arr_var0 as $__foreach_key_var2 => &$__foreach_item_var1){
 						$__foreach_idx_var3++;
 						 $aVariables->set("row",$__foreach_item_var1 ); ?>
-	
-			<?php echo eval("if(!isset(\$__uivar_row)){ \$__uivar_row=&\$aVariables->getRef('row') ;};
-return \$__uivar_row->data('blog.title');") ;?><br />
-			
+	<li>
+			<span><a href=""><?php echo eval("if(!isset(\$__uivar_row)){ \$__uivar_row=&\$aVariables->getRef('row') ;};
+return \$__uivar_row->data('blog.title');") ;?></a></span>
+	</li>	
 <?php 
 					}
 				}
 			 		?>
+</div>

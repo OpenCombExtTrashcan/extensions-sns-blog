@@ -1,6 +1,6 @@
 <?php \jc\resrc\HtmlResourcePool::singleton()->addRequire("blog.css",\jc\resrc\HtmlResourcePool::RESRC_CSS) ; ?>
 
-<div class="blogUpdate">
+<div class="blogtagUpdate">
 <h4>修改标签</h4>
 
 <?php 
@@ -17,7 +17,7 @@ if( $__ui_msgqueue->count() ){
 
 <?php if( !($aVariables->get('theView') instanceof \jc\mvc\view\IFormView) or $aVariables->get('theView')->isShowForm() ) { ?>
 <form action="/?c=blog.tag.update" method="post">
-	<div>
+	<div class="blogTag">
 		<?php $_aWidget = $aVariables->get('theView')->widget("title") ;
 if($_aWidget){
 	$_aWidget->display($this,null,$aDevice) ;

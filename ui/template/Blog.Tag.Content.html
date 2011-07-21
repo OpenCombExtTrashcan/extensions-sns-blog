@@ -1,5 +1,11 @@
+<css src="blog.css" />
+
+<div class="aboutTag">
+<h4>标签相关博文</h4>
+
 <foreach for="$theModel->childIterator()" item="row">
-	
-			{= $row->data('blog.title') }<br/>
-			
+	<li>
+			<span><a href="">{= $row->data('blog.title') }</a></span>
+	</li>	
 </foreach>
+</div>

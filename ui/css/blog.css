@@ -1,10 +1,10 @@
 
-.allblogList,.blogUpdate, .blogInsert, .alltagList{border:1px solid #ccc;padding:14px;overflow:hidden; zoom:1;}
-.allblogList h4, .blogUpdate h4, .blogInsert h4, .alltagList h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
-.allblogList ul, .alltagList ul{margin-bottom:10px;}
-.allblogList li, .alltagList li{padding:5px 0; height:16px; line-height:16px;margin:0px; background:url(/platform/ui/images/column_line.gif) repeat-x 0 bottom; list-style-type:none}
+.allblogList,.blogUpdate, .blogInsert, .alltagList, .blogtagUpdate, .aboutTag{border:1px solid #ccc;padding:14px;overflow:hidden; zoom:1;}
+.allblogList h4, .blogUpdate h4, .blogInsert h4, .alltagList h4, .blogtagUpdate h4, .aboutTag h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
+.allblogList ul, .alltagList ul, .aboutTag ul{margin-bottom:10px;}
+.allblogList li, .alltagList li, .aboutTag li{padding:5px 0; height:16px; line-height:16px;margin:0px; background:url(/platform/ui/images/column_line.gif) repeat-x 0 bottom; list-style-type:none}
 .allblogList span, .alltagList span{font-size:14px;  float:left;}
-.allblogList span a:hover, .alltagList span a:hover{ text-decoration:none; color:#f90}
+.allblogList span a:hover, .alltagList span a:hover, .aboutTag span a:hover{ text-decoration:none; color:#f90}
 .allblogList em, .alltagList em{ float:right;}
 
 .blogUpdate_btn {
@@ -24,4 +24,5 @@
 .blogTit input, .blogTag input{ border:1px solid #ccc; padding:1px; height:17px; width:300px; vertical-align:middle}
 .blogContent_border{background:#eee; border:1px solid #ccc;padding:6px; margin:10px 0;}
 .blogContent{width:886px;resize:none; height:280px; border:1px solid #ccc; overflow-x:hidden; overflow-y: auto; color:#333; font-size:12px;padding:4px;}
+
 

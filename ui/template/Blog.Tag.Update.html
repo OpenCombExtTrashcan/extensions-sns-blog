@@ -1,13 +1,13 @@
 <css src="blog.css" />
 
-<div class="blogUpdate">
+<div class="blogtagUpdate">
 <h4>修改标签</h4>
 {* 显示 当前视图 的消息队列 }
 <msgqueue for="$theView" />
 
 
 <form action="/?c=blog.tag.update" method="post">
-	<div>
+	<div class="blogTag">
 		<widget id="title"/>
 		<msgqueue for="$theView->widget('title')" />
 	</div>
