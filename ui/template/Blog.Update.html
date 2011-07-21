@@ -1,22 +1,29 @@
+<css src="blog.css" />
+
+<div class="blogUpdate">
+<h4>编辑博文</h4>
 {* 显示 当前视图 的消息队列 }
 <msgqueue for="$theView" />
 
 
-<form action="/?c=blog.update" method="post">
-	<div>
+<form action="/?c=blog.update" method="post" >
+	<div class="blogTit">
+		<label>标题：</label>
 		<widget id="title"/>
 		<msgqueue for="$theView->widget('title')" />
 	</div>
-	<div>
-		<widget id="text"/>
+	<div class="blogContent_border">
+		<widget id="text" attr.class="blogContent" />
 		<msgqueue for="$theView->widget('text')" />
 	</div>
 	
-	<div>
+	<div class="blogTag">
+		<label>标签：</label>
 		<widget id="tag"/>
 		<msgqueue for="$theView->widget('tag')" />
 	</div>
 	<input type="hidden" id="id" name="id" value="{= $theModel->data('bid') }"></input>
-	<input type="submit" value="submit" />
+	<input type="submit" value="保存修改" class="blogUpdate_btn" />
 	
 </form>
+</div>

@@ -1,8 +1,27 @@
 
-.allblogList{border:1px solid #ccc;padding:20px;overflow:hidden; zoom:1;}
-.allblogList h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
+.allblogList,.blogUpdate{border:1px solid #ccc;padding:14px;overflow:hidden; zoom:1;}
+.allblogList h4, .blogUpdate h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
 .allblogList ul{margin-bottom:10px;}
 .allblogList li{padding:5px 0; height:16px; line-height:16px;margin:0px; background:url(/platform/ui/images/column_line.gif) repeat-x 0 bottom;}
 .allblogList span{font-size:14px;  float:left;}
 .allblogList span a:hover{ text-decoration:none; color:#f90}
 .allblogList em{ float:right;}
+
+.blogUpdate_btn {
+	margin:20px auto 10px;
+	width:84px;
+	height:25px;
+	font-size:16px;
+	line-height:25px;
+	cursor:pointer;
+	background:#005eac;
+	color:#fff;
+	display:block;
+	border:1px solid #024073
+}
+
+.blogTit label{ vertical-align:middle}
+.blogTit input, .blogTag input{ border:1px solid #ccc; padding:1px; height:17px; width:300px; vertical-align:middle}
+.blogContent_border{background:#eee; border:1px solid #ccc;padding:6px; margin:10px 0;}
+.blogContent{width:886px;resize:none; height:256px; border:1px solid #ccc; overflow-x:hidden; overflow-y: auto; color:#333; font-size:12px;padding:4px;}
+

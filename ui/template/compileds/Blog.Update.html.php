@@ -1,3 +1,7 @@
+<?php \jc\resrc\HtmlResourcePool::singleton()->addRequire("blog.css",\jc\resrc\HtmlResourcePool::RESRC_CSS) ; ?>
+
+<div class="blogUpdate">
+<h4>编辑博文</h4>
 
 <?php 
 $__ui_msgqueue = eval("if(!isset(\$__uivar_theView)){ \$__uivar_theView=&\$aVariables->getRef('theView') ;};
@@ -11,9 +15,10 @@ if( $__ui_msgqueue->count() ){
 
 
 
-<?php if( !($aVariables->get('theView') instanceof \jc\mvc\view\FormView) or $aVariables->get('theView')->isShowForm() ) { ?>
+<?php if( !($aVariables->get('theView') instanceof \jc\mvc\view\IFormView) or $aVariables->get('theView')->isShowForm() ) { ?>
 <form action="/?c=blog.update" method="post">
-	<div>
+	<div class="blogTit">
+		<label>标题：</label>
 		<?php $_aWidget = $aVariables->get('theView')->widget("title") ;
 if($_aWidget){
 	$_aWidget->display($this,null,$aDevice) ;
@@ -32,9 +37,10 @@ if( $__ui_msgqueue->count() ){
 } ?>
 
 	</div>
-	<div>
+	<div class="blogContent_border">
 		<?php $_aWidget = $aVariables->get('theView')->widget("text") ;
 if($_aWidget){
+	$_aWidget->setAttribute("class","blogContent") ;
 	$_aWidget->display($this,null,$aDevice) ;
 }else{
 	echo '缺少 widget (id:'."text".')' ;
@@ -52,7 +58,8 @@ if( $__ui_msgqueue->count() ){
 
 	</div>
 	
-	<div>
+	<div class="blogTag">
+		<label>标签：</label>
 		<?php $_aWidget = $aVariables->get('theView')->widget("tag") ;
 if($_aWidget){
 	$_aWidget->display($this,null,$aDevice) ;
@@ -73,6 +80,8 @@ if( $__ui_msgqueue->count() ){
 	</div>
 	<input type="hidden" id="id" name="id" value="<?php echo eval("if(!isset(\$__uivar_theModel)){ \$__uivar_theModel=&\$aVariables->getRef('theModel') ;};
 return \$__uivar_theModel->data('bid');") ;?>"></input>
-	<input type="submit" value="submit" />
+	<input type="submit" value="保存修改" class="blogUpdate_btn" />
 	
-<input type="hidden" name="<?php echo $aVariables->get('theView')->htmlFormSignature()?>" value="1" /></form><?php } ?>
+<?php if($aVariables->get('theView') instanceof \jc\mvc\view\IFormView){ ?><input type="hidden" name="<?php echo $aVariables->get('theView')->htmlFormSignature()?>" value="1" /><?php } ?></form><?php } ?>
+
+</div>
