@@ -22,6 +22,6 @@
 
 .blogTit label{ vertical-align:middle}
 .blogTit input, .blogTag input{ border:1px solid #ccc; padding:1px; height:17px; width:300px; vertical-align:middle}
-.blogContent_border{background:#eee; border:1px solid #ccc;padding:6px; margin:10px 0;}
-.blogContent{width:886px;resize:none; height:256px; border:1px solid #ccc; overflow-x:hidden; overflow-y: auto; color:#333; font-size:12px;padding:4px;}
+.blogContent_border{background:#eee; border:1px solid #ccc;padding:6px; margin:16px 0;}
+.blogContent{width:886px;resize:none; height:280px; border:1px solid #ccc; overflow-x:hidden; overflow-y: auto; color:#333; font-size:12px;padding:4px;}
 
