@@ -1,3 +1,7 @@
+<?php \jc\resrc\HtmlResourcePool::singleton()->addRequire("blog.css",\jc\resrc\HtmlResourcePool::RESRC_CSS) ; ?>
+
+<div class="blogInsert">
+<h4>发博文</h4>
 
 <?php 
 $__ui_msgqueue = eval("if(!isset(\$__uivar_theView)){ \$__uivar_theView=&\$aVariables->getRef('theView') ;};
@@ -11,9 +15,10 @@ if( $__ui_msgqueue->count() ){
 
 
 
-<?php if( !($aVariables->get('theView') instanceof \jc\mvc\view\FormView) or $aVariables->get('theView')->isShowForm() ) { ?>
+<?php if( !($aVariables->get('theView') instanceof \jc\mvc\view\IFormView) or $aVariables->get('theView')->isShowForm() ) { ?>
 <form action="/?c=blog.insert" method="post">
-	<div>
+	<div class="blogTit">
+		<label>标题：</label>
 		<?php $_aWidget = $aVariables->get('theView')->widget("title") ;
 if($_aWidget){
 	$_aWidget->display($this,null,$aDevice) ;
@@ -21,7 +26,7 @@ if($_aWidget){
 	echo '缺少 widget (id:'."title".')' ;
 } ?>
 
-		标题：<?php 
+		<?php 
 $__ui_msgqueue = eval("if(!isset(\$__uivar_theView)){ \$__uivar_theView=&\$aVariables->getRef('theView') ;};
 return \$__uivar_theView->widget('title');") ;
 if( $__ui_msgqueue instanceof \jc\message\IMessageQueueHolder )
@@ -32,15 +37,16 @@ if( $__ui_msgqueue->count() ){
 } ?>
 
 	</div>
-	<div>
+	<div class="blogContent_border">
 		<?php $_aWidget = $aVariables->get('theView')->widget("text") ;
 if($_aWidget){
+	$_aWidget->setAttribute("class","blogContent") ;
 	$_aWidget->display($this,null,$aDevice) ;
 }else{
 	echo '缺少 widget (id:'."text".')' ;
 } ?>
 
-		内容：<?php 
+		<?php 
 $__ui_msgqueue = eval("if(!isset(\$__uivar_theView)){ \$__uivar_theView=&\$aVariables->getRef('theView') ;};
 return \$__uivar_theView->widget('text');") ;
 if( $__ui_msgqueue instanceof \jc\message\IMessageQueueHolder )
@@ -51,7 +57,8 @@ if( $__ui_msgqueue->count() ){
 } ?>
 
 	</div>
-	<div>
+	<div class="blogTag">
+		<label>标签：</label>
 		<?php $_aWidget = $aVariables->get('theView')->widget("tag") ;
 if($_aWidget){
 	$_aWidget->display($this,null,$aDevice) ;
@@ -59,7 +66,7 @@ if($_aWidget){
 	echo '缺少 widget (id:'."tag".')' ;
 } ?>
 
-		标签：<?php 
+		<?php 
 $__ui_msgqueue = eval("if(!isset(\$__uivar_theView)){ \$__uivar_theView=&\$aVariables->getRef('theView') ;};
 return \$__uivar_theView->widget('tag');") ;
 if( $__ui_msgqueue instanceof \jc\message\IMessageQueueHolder )
@@ -70,6 +77,8 @@ if( $__ui_msgqueue->count() ){
 } ?>
 
 	</div>
-	<input type="submit" value="submit" />
+	<input type="submit" value="发布博文" class="blogUpdate_btn" />
 	
-<input type="hidden" name="<?php echo $aVariables->get('theView')->htmlFormSignature()?>" value="1" /></form><?php } ?>
+<?php if($aVariables->get('theView') instanceof \jc\mvc\view\IFormView){ ?><input type="hidden" name="<?php echo $aVariables->get('theView')->htmlFormSignature()?>" value="1" /><?php } ?></form><?php } ?>
+
+</div>

@@ -1,22 +1,27 @@
 <css src="blog.css" />
 
+<div class="blogInsert">
+<h4>发博文</h4>
 {* 显示 当前视图 的消息队列 }
 <msgqueue for="$theView" />
 
 
 <form action="/?c=blog.insert" method="post">
-	<div>
+	<div class="blogTit">
+		<label>标题：</label>
 		<widget id="title"/>
-		标题：<msgqueue for="$theView->widget('title')" />
+		<msgqueue for="$theView->widget('title')" />
 	</div>
-	<div>
-		<widget id="text"/>
-		内容：<msgqueue for="$theView->widget('text')" />
+	<div class="blogContent_border">
+		<widget id="text" attr.class="blogContent" />
+		<msgqueue for="$theView->widget('text')" />
 	</div>
-	<div>
+	<div class="blogTag">
+		<label>标签：</label>
 		<widget id="tag"/>
-		标签：<msgqueue for="$theView->widget('tag')" />
+		<msgqueue for="$theView->widget('tag')" />
 	</div>
-	<input type="submit" value="submit" />
+	<input type="submit" value="发布博文"  class="blogUpdate_btn" />
 	
 </form>
+</div>

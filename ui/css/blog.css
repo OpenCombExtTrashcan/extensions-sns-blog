@@ -1,6 +1,6 @@
 
-.allblogList,.blogUpdate{border:1px solid #ccc;padding:14px;overflow:hidden; zoom:1;}
-.allblogList h4, .blogUpdate h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
+.allblogList,.blogUpdate, .blogInsert{border:1px solid #ccc;padding:14px;overflow:hidden; zoom:1;}
+.allblogList h4, .blogUpdate h4, .blogInsert h4{ font-size:14px; font-weight:bold; color:#005eac; border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:20px;}
 .allblogList ul{margin-bottom:10px;}
 .allblogList li{padding:5px 0; height:16px; line-height:16px;margin:0px; background:url(/platform/ui/images/column_line.gif) repeat-x 0 bottom;}
 .allblogList span{font-size:14px;  float:left;}
