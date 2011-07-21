@@ -3,6 +3,7 @@
 <div class="blogInsert">
 <h4>发博文</h4>
 
+
 <?php 
 $__ui_msgqueue = eval("if(!isset(\$__uivar_theView)){ \$__uivar_theView=&\$aVariables->getRef('theView') ;};
 return \$__uivar_theView;") ;

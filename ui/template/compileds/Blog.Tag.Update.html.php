@@ -1,3 +1,7 @@
+<?php \jc\resrc\HtmlResourcePool::singleton()->addRequire("blog.css",\jc\resrc\HtmlResourcePool::RESRC_CSS) ; ?>
+
+<div class="blogUpdate">
+<h4>修改标签</h4>
 
 <?php 
 $__ui_msgqueue = eval("if(!isset(\$__uivar_theView)){ \$__uivar_theView=&\$aVariables->getRef('theView') ;};
@@ -11,7 +15,7 @@ if( $__ui_msgqueue->count() ){
 
 
 
-<?php if( !($aVariables->get('theView') instanceof \jc\mvc\view\FormView) or $aVariables->get('theView')->isShowForm() ) { ?>
+<?php if( !($aVariables->get('theView') instanceof \jc\mvc\view\IFormView) or $aVariables->get('theView')->isShowForm() ) { ?>
 <form action="/?c=blog.tag.update" method="post">
 	<div>
 		<?php $_aWidget = $aVariables->get('theView')->widget("title") ;
@@ -35,6 +39,8 @@ if( $__ui_msgqueue->count() ){
 	
 	<input type="hidden" id="id" name="id" value="<?php echo eval("if(!isset(\$__uivar_theModel)){ \$__uivar_theModel=&\$aVariables->getRef('theModel') ;};
 return \$__uivar_theModel->data('tid');") ;?>"></input>
-	<input type="submit" value="submit" />
+	<input type="submit" value="修改" class="blogUpdate_btn" />
 	
-<input type="hidden" name="<?php echo $aVariables->get('theView')->htmlFormSignature()?>" value="1" /></form><?php } ?>
+<?php if($aVariables->get('theView') instanceof \jc\mvc\view\IFormView){ ?><input type="hidden" name="<?php echo $aVariables->get('theView')->htmlFormSignature()?>" value="1" /><?php } ?></form><?php } ?>
+
+</div>
