@@ -1,3 +1,16 @@
-<foreach for="$theModel->childIterator()" item="row">
-			{= $row->data('title') }:排名{= $row->data('hot') }<br/>
-</foreach>
+<css src="blog.css" />
+
+<table cellspacing="0" cellpadding="0" class="blogtagHot">
+	<tbody>
+		<tr class="blogtagHot_tit">
+			<th>标签</th>
+			<th style="width:50%">排名</th>
+		</tr>
+		<foreach for="$theModel->childIterator()" item="row">
+		<tr>
+			<td>{= $row->data('title') }</td>
+			<td class="hotNumber">{= $row->data('hot') }</td>
+		</tr>
+		</foreach>
+	</tbody>
+</table>

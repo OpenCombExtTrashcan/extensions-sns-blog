@@ -24,3 +24,11 @@
 .blogTit input, .blogTag input{ border:1px solid #ccc; padding:1px; height:17px; width:300px; vertical-align:middle}
 .blogContent_border{background:#eee; border:1px solid #ccc;padding:6px; margin:10px 0;}
 .blogContent{width:886px;resize:none; height:280px; border:1px solid #ccc; overflow-x:hidden; overflow-y: auto; color:#333; font-size:12px;padding:4px;}
+
+.blogtagHot{ width:100%; border:1px solid #ccc;}
+.blogtagHot .blogtagHot_tit, .blogtagHot .blogtagHot_tit:hover { background:#ddd;}
+.blogtagHot_tit th{font-weight:bold; color:#000;padding:4px;}
+.blogtagHot tr{ background:url(/platform/ui/images/column_line.gif) repeat-x 0 bottom;}
+.blogtagHot tr:hover{ background:#eee;}
+.blogtagHot tr td{padding:4px;}
+.hotNumber{color:#999;}
