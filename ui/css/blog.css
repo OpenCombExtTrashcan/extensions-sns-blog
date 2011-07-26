@@ -9,15 +9,14 @@
 
 .blogUpdate_btn {
 	margin:20px auto 10px;
-	width:84px;
-	height:25px;
-	font-size:16px;
-	line-height:25px;
 	cursor:pointer;
 	background:#005eac;
 	color:#fff;
 	display:block;
-	border:1px solid #024073
+	padding:2px 15px;
+	border-color: #B8D4E8 #124680 #124680 #B8D4E8;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .blogTit label{ vertical-align:middle}
